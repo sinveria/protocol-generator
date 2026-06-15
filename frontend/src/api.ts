@@ -27,10 +27,20 @@ export async function uploadStudents(file: File): Promise<ParseResult> {
 }
 
 export async function createSession(data: SessionData): Promise<SessionData> {
+  const payload = {
+    ...data,
+    event_date: data.event_date || null,
+    order_date: data.order_date || null,
+    order_admission: data.order_admission || null,
+    study_form: data.study_form || null,
+    work_type: data.work_type || null,
+    number: Number(data.number) || 1,
+  };
+
   const r = await fetch(`${BASE}/sessions`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
+    body: JSON.stringify(payload),
   });
   return handle<SessionData>(r);
 }
