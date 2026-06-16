@@ -1,5 +1,5 @@
 from datetime import date
-from pydantic import BaseModel
+from pydantic import BaseModel, field_validator
 
 
 class MemberIn(BaseModel):
@@ -37,6 +37,12 @@ class SessionIn(BaseModel):
     order_date: date | None = None
     members: list[MemberIn] = []
     students: list[StudentIn] = []
+    @field_validator("event_date", "order_date", mode="before")
+    @classmethod
+    def empty_str_to_none(cls, v):
+        if v == "":
+            return None
+        return v
 
 
 class SessionOut(SessionIn):
