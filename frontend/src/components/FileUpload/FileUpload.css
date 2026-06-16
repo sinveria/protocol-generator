@@ -1,0 +1,12 @@
+.upload-zone {
+  border: 2px dashed #f0b88f;
+  border-radius: var(--radius);
+  background: #fffaf6;
+  padding: 22px 24px;
+  margin-bottom: 22px;
+  transition: border-color .15s, background .15s;
+}
+.upload-zone:hover { border-color: var(--orange); background: var(--orange-light); }
+.upload-zone label { font-weight: 700; color: var(--black); }
+.upload-zone input[type="file"] { margin-top: 12px; }
+.upload-file { color: var(--muted); margin: 10px 0 0; }

@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { createSession, getSession } from "../api";
 import type { SessionData, Member, Student, ParseResult } from "../types";
-import FileUpload from "../components/FileUpload";
-import SessionForm from "../components/SessionForm";
+import FileUpload from "../components/FileUpload/FileUpload";
+import SessionForm from "../components/SessionForm/SessionForm";
 import MembersEditor from "../components/MembersEditor";
 import StudentsTable from "../components/StudentsTable";
-import DocumentsPanel from "../components/DocumentsPanel";
+import DocumentsPanel from "../components/DocumentsPanel/DocumentsPanel";
 
 const EMPTY_SESSION: SessionData = {
   number: 1,
@@ -77,7 +77,7 @@ export default function SessionPage() {
     }
   }
 
-  if (loading) return <p>Загрузка…</p>;
+  if (loading) return <p className="muted">Загрузка…</p>;
 
   return (
     <div>
@@ -97,22 +97,22 @@ export default function SessionPage() {
         onChange={(students: Student[]) => patch({ students })}
       />
 
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {error && <p className="error">{error}</p>}
 
       <div style={{ marginBottom: 20 }}>
         <button
+          className="btn btn-primary"
           onClick={handleSave}
           disabled={saving}
-          style={{ padding: "10px 20px", fontWeight: "bold" }}
         >
-          {saving ? "Сохранение…" : "💾 Сохранить сессию"}
+          {saving ? "Сохранение…" : "Сохранить сессию"}
         </button>
       </div>
 
       {savedId ? (
         <DocumentsPanel sessionId={savedId} />
       ) : (
-        <p style={{ color: "#777" }}>
+        <p className="muted">
           Сохраните сессию, чтобы сгенерировать документы.
         </p>
       )}

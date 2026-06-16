@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { uploadStudents } from "../api";
-import type { ParseResult } from "../types";
+import { uploadStudents } from "../../api";
+import type { ParseResult } from "../../types";
+import "./FileUpload.css";
 
 interface Props {
   onParsed: (result: ParseResult) => void;
@@ -28,16 +29,14 @@ export default function FileUpload({ onParsed }: Props) {
   }
 
   return (
-    <div style={{ border: "2px dashed #aaa", borderRadius: 8, padding: 20, marginBottom: 20 }}>
-      <label style={{ fontWeight: "bold" }}>
-        Загрузить список студентов (.xls / .xlsx)
-      </label>
-      <div style={{ marginTop: 10 }}>
+    <div className="upload-zone">
+      <label>Загрузить список студентов (.xls / .xlsx)</label>
+      <div>
         <input type="file" accept=".xls,.xlsx" onChange={handleFile} disabled={loading} />
       </div>
-      {fileName && <p style={{ color: "#555" }}>Файл: {fileName}</p>}
-      {loading && <p>⏳ Разбираю файл…</p>}
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {fileName && <p className="upload-file">Файл: {fileName}</p>}
+      {loading && <p className="muted">Разбираю файл…</p>}
+      {error && <p className="error">{error}</p>}
     </div>
   );
 }

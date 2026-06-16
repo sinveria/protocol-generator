@@ -1,0 +1,15 @@
+.documents-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.doc-btn {
+  background: var(--orange-light);
+  border-color: #f8cdb0;
+  color: var(--orange-dark);
+}
+.doc-btn:hover {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: #fff;
+}
