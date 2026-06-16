@@ -32,27 +32,6 @@
 - Vite — сборщик
 - React Router — маршрутизация
 
-## Структура проекта
-.
-├── backend/            # серверная часть (FastAPI)
-│   ├── app/
-│   │   ├── main.py         # точка входа, маршруты API
-│   │   ├── models.py       # модели БД
-│   │   ├── schemas.py      # схемы Pydantic
-│   │   ├── parser.py       # парсинг Excel-файлов
-│   │   └── documents.py    # генерация документов
-│   └── requirements.txt
-│
-└── frontend/           # клиентская часть (React + TS)
-├── src/
-│   ├── api.ts          # взаимодействие с API
-│   ├── types.ts        # типы данных
-│   ├── components/     # компоненты интерфейса
-│   └── pages/          # страницы
-├── package.json
-└── vite.config.ts
-
-
 ## Требования
 
 - Python 3.11 или выше
