@@ -26,11 +26,11 @@ export default function StudentsTable({ students, onChange }: Props) {
   }
 
   return (
-    <fieldset style={{ marginBottom: 20, border: "1px solid #ccc", borderRadius: 8 }}>
-      <legend style={{ fontWeight: "bold" }}>Студенты ({students.length})</legend>
-      <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 14 }}>
+    <fieldset className="card">
+      <legend>Студенты ({students.length})</legend>
+      <table className="table">
         <thead>
-          <tr style={{ background: "#f0f0f0" }}>
+          <tr>
             <th style={{ width: 40 }}>№</th>
             <th>ФИО</th>
             <th>Тема</th>
@@ -42,33 +42,33 @@ export default function StudentsTable({ students, onChange }: Props) {
         </thead>
         <tbody>
           {students.map((s, idx) => (
-            <tr key={idx} style={{ borderBottom: "1px solid #eee" }}>
-              <td style={{ textAlign: "center" }}>{s.seq_no}</td>
+            <tr key={idx}>
+              <td className="text-center">{s.seq_no}</td>
               <td>
                 <input
-                  style={{ width: "100%" }}
+                  className="input"
                   value={s.full_name}
                   onChange={(e) => update(idx, { full_name: e.target.value })}
                 />
               </td>
               <td>
                 <textarea
+                  className="textarea"
                   rows={2}
-                  style={{ width: "100%" }}
                   value={s.thesis_topic || ""}
                   onChange={(e) => update(idx, { thesis_topic: e.target.value })}
                 />
               </td>
               <td>
                 <input
-                  style={{ width: "100%" }}
+                  className="input"
                   value={s.citizenship || ""}
                   onChange={(e) => update(idx, { citizenship: e.target.value })}
                 />
               </td>
               <td>
                 <select
-                  style={{ width: "100%" }}
+                  className="select"
                   value={s.grade || ""}
                   onChange={(e) => update(idx, { grade: e.target.value })}
                 >
@@ -80,21 +80,23 @@ export default function StudentsTable({ students, onChange }: Props) {
                   ))}
                 </select>
               </td>
-              <td style={{ textAlign: "center" }}>
+              <td className="text-center">
                 <input
                   type="checkbox"
                   checked={!!s.with_honors}
                   onChange={(e) => update(idx, { with_honors: e.target.checked })}
                 />
               </td>
-              <td>
-                <button onClick={() => remove(idx)}>✕</button>
+              <td className="text-center">
+                <button className="btn btn-icon" onClick={() => remove(idx)}>
+                  ×
+                </button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-      <button onClick={add} style={{ marginTop: 10 }}>
+      <button className="btn mt-10" onClick={add}>
         + Добавить студента
       </button>
     </fieldset>

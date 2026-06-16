@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { getDocTypes, downloadDocument } from "../api";
-import type { DocType } from "../types";
+import { getDocTypes, downloadDocument } from "../../api";
+import type { DocType } from "../../types";
+import "./DocumentsPanel.css";
 
 interface Props {
   sessionId: number;
@@ -28,28 +29,22 @@ export default function DocumentsPanel({ sessionId }: Props) {
   }
 
   return (
-    <fieldset style={{ marginBottom: 20, border: "1px solid #2c5", borderRadius: 8 }}>
-      <legend style={{ fontWeight: "bold" }}>Генерация документов</legend>
-      <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
+    <fieldset className="card">
+      <legend>Генерация документов</legend>
+      <div className="documents-grid">
         {types.map((t) => (
           <button
             key={t.type}
+            className="btn doc-btn"
             onClick={() => generate(t.type)}
             disabled={busy === t.type}
-            style={{
-              padding: "10px 16px",
-              border: "1px solid #2c5",
-              borderRadius: 6,
-              background: busy === t.type ? "#eee" : "#f6fff6",
-              cursor: "pointer",
-            }}
           >
-            {busy === t.type ? "⏳ " : "📥 "}
+            {busy === t.type ? "Подготовка… " : ""}
             {t.title}
           </button>
         ))}
       </div>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {error && <p className="error">{error}</p>}
     </fieldset>
   );
 }

@@ -182,3 +182,42 @@
     border-right-color: var(--border);
   }
 }
+
+.app {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 28px 56px;
+}
+
+.app-header {
+  background: var(--card);
+  border-radius: 0 0 var(--radius) var(--radius);
+  border-bottom: 4px solid var(--orange);
+  padding: 22px 28px;
+  margin: 0 -28px 28px;
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.app-header a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.app-logo {
+  width: 46px;
+  height: 46px;
+  border-radius: 10px;
+  background: var(--orange);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 18px;
+  letter-spacing: -1px;
+  flex-shrink: 0;
+}
